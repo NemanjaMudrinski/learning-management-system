@@ -1,0 +1,36 @@
+<!--
+<button type="button" mat-button (click)="drawer.toggle()">
+  <mat-icon>menu</mat-icon>
+</button>
+<mat-drawer-container class="teachercontainer" autosize>
+<mat-drawer #drawer class="teacher-sidenav" mode="side" opened="true">
+    <button mat-button [matMenuTriggerFor]="teacherMenu">Menu</button>
+    <br>
+    <mat-menu #teacherMenu="matMenu">
+-->
+<button class="full-width" mat-button routerLink = "teacherSubjects" routerLinkActive="active-item">My Current Subjects</button><br>
+<!--
+<button class="full-width" mat-button [matMenuTriggerFor]="addMenu">Add</button><br>
+<mat-menu #addMenu="matMenu">
+  <button mat-menu-item routerLink="add/exam">Exam</button>
+  <button mat-menu-item routerLink="add/topics">Topics</button>
+</mat-menu>
+-->
+<button class="full-width" mat-button routerLink="add/exam" routerLinkActive="active-item">Add new exam</button><br>
+<button class="full-width" mat-button routerLink="add/topics" routerLinkActive="active-item">Add new topics</button><br>
+<!--<button class="full-width" mat-button>Enter grades</button><br>-->
+<button class="full-width" mat-button>Create notifications</button><br>
+<!--<button class="full-width" mat-button routerLink="studentListBySubject" routerLinkActive="active-item">Students on my subjects</button><br>-->
+<button class="full-width" mat-button routerLink="searchStudents" routerLinkActive="active-item">Search students</button><br>
+<button class="full-width" mat-button>Forum</button><br>
+<button class="full-width" mat-button routerLink="chat" routerLinkActive="active-item">Chat</button><br>
+<!--
+    </mat-menu>
+</mat-drawer>
+
+<div class="teacher-sidenav-content">
+  <router-outlet></router-outlet>
+</div>
+
+</mat-drawer-container>
+-->

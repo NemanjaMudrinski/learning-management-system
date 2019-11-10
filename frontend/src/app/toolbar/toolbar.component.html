@@ -1,0 +1,53 @@
+<mat-toolbar class="main-toolbar">
+
+  <button mat-button routerLink="/">
+    <mat-icon>home</mat-icon>
+    {{title}}
+  </button>
+
+  <span class="fill-remaining-space"></span>
+  <div fxLayout="row" fxShow="false" fxShow.gt-sm class="full-height">
+    <button mat-button routerLink="university" routerLinkActive="active-item">University</button>
+
+    <button mat-button [matMenuTriggerFor]="facultiesMenu">Faculties</button>
+    <mat-menu #facultiesMenu="matMenu">
+      <button mat-menu-item *ngFor="let f of faculties" [routerLink]="['faculty', f.id]">{{ f.name }}</button>
+    </mat-menu>
+
+    <ng-container *ngIf="isLoggedIn">
+      <button mat-button [routerLink]="['edit/'+loggedUserType, loggedUserUsername]" routerLinkActive="active-item">Profile</button>
+    </ng-container>
+
+    <ng-container *ngIf="isLoggedIn; else elseTemplate">
+      <button mat-button (click)="onLogout()">Logout</button>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <button mat-button routerLink="login">Login</button>
+    </ng-template>
+    
+  </div>
+
+  <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-button routerLink="university">University</button>
+
+    <button mat-button [matMenuTriggerFor]="facultiesMenu" (click)="$event.stopPropagation();">Faculties</button>
+    <mat-menu #facultiesMenu="matMenu">
+      <button mat-menu-item *ngFor="let f of faculties" [routerLink]="['faculty', f.id]">{{ f.name }}</button>
+    </mat-menu>
+
+    <ng-container *ngIf="isLoggedIn">
+      <button mat-button [routerLink]="['edit/'+loggedUserType, loggedUserUsername]">Profile</button>
+    </ng-container>
+
+    <ng-container *ngIf="isLoggedIn; else elseTemplate">
+      <button mat-button (click)="onLogout()">Logout</button>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <button mat-button routerLink="login">Login</button>
+    </ng-template>
+  </mat-menu>
+
+</mat-toolbar>
